@@ -5,9 +5,9 @@ import "testing"
 func TestGutterGame(t *testing.T) {
 	g := BowlingGame{}
 	for ii := 0; ii < 20; ii++ {
-		g.roll(0)
+		g.Roll(0)
 	}
-	if g.score() != 0 {
+	if g.Score() != 0 {
 		t.Fail()
 	}
 }
@@ -15,9 +15,9 @@ func TestGutterGame(t *testing.T) {
 func TestAllOnes(t *testing.T) {
 	g := BowlingGame{}
 	for ii := 0; ii < 20; ii++ {
-		g.roll(1)
+		g.Roll(1)
 	}
-	if g.score() != 20 {
+	if g.Score() != 20 {
 		t.Fail()
 	}
 }

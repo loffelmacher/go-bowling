@@ -3,15 +3,15 @@ package main
 import "fmt"
 
 type BowlingGame struct {
-	Score int
+	score int
 }
 
-func (g *BowlingGame) score() int {
-	return g.Score
+func (g *BowlingGame) Score() int {
+	return g.score
 }
 
-func (g *BowlingGame) roll(pins int) {
-	g.Score += pins
+func (g *BowlingGame) Roll(pins int) {
+	g.score += pins
 }
 
 func main() {

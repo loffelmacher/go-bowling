@@ -8,6 +8,11 @@ func RollMany(g *BowlingGame, nn, pins int) {
 	}
 }
 
+func RollSpare(g *BowlingGame) {
+	g.Roll(5)
+	g.Roll(5)
+}
+
 func TestGutterGame(t *testing.T) {
 	g := BowlingGame{}
 	RollMany(&g, 20, 0)
@@ -26,8 +31,7 @@ func TestAllOnes(t *testing.T) {
 
 func TestOneSpare(t *testing.T) {
 	g := BowlingGame{}
-	g.Roll(5)
-	g.Roll(5)
+	RollSpare(&g)
 	g.Roll(3)
 	RollMany(&g, 17, 0)
 	if g.Score() != 16 {

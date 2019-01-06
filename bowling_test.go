@@ -51,3 +51,11 @@ func TestOneStrike(t *testing.T) {
 		t.Fail()
 	}
 }
+
+func TestPerfectGame(t *testing.T) {
+	g := BowlingGame{}
+	RollMany(&g, 12, 10)
+	if g.Score() != 300 {
+		t.Log("Expected 300 but score is " + g.String())
+	}
+}

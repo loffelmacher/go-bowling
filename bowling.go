@@ -11,7 +11,7 @@ func (g *BowlingGame) Score() int {
 	var score = 0
 	var frameIndex = 0
 	for frame := 0; frame < 10; frame++ {
-		if g.rolls[frameIndex] == 10 {
+		if g.isStrike(frameIndex) {
 			score += 10 + g.rolls[frameIndex+1] + g.rolls[frameIndex+2]
 			frameIndex++
 		} else if g.isSpare(frameIndex) {
@@ -37,6 +37,10 @@ func (g *BowlingGame) String() string {
 
 func (g *BowlingGame) isSpare(frameIndex int) bool {
 	return g.rolls[frameIndex]+g.rolls[frameIndex+1] == 10
+}
+
+func (g *BowlingGame) isStrike(frameIndex int) bool {
+	return g.rolls[frameIndex] == 10
 }
 
 func main() {

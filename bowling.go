@@ -18,7 +18,7 @@ func (g *BowlingGame) Score() int {
 			score += 10 + spareBonus(g, frameIndex)
 			frameIndex += 2
 		} else {
-			score += g.rolls[frameIndex] + g.rolls[frameIndex+1]
+			score += sumOfBallsInFrame(g, frameIndex)
 			frameIndex += 2
 		}
 
@@ -49,6 +49,10 @@ func isSpare(g *BowlingGame, frameIndex int) bool {
 
 func isStrike(g *BowlingGame, frameIndex int) bool {
 	return g.rolls[frameIndex] == 10
+}
+
+func sumOfBallsInFrame(g *BowlingGame, frameIndex int) int {
+	return g.rolls[frameIndex] + g.rolls[frameIndex+1]
 }
 
 func main() {

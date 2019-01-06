@@ -11,11 +11,11 @@ func (g *BowlingGame) Score() int {
 	var score = 0
 	var frameIndex = 0
 	for frame := 0; frame < 10; frame++ {
-		if g.isStrike(frameIndex) {
-			score += 10 + g.rolls[frameIndex+1] + g.rolls[frameIndex+2]
+		if isStrike(g, frameIndex) {
+			score += 10 + strikeBonus(g, frameIndex)
 			frameIndex++
-		} else if g.isSpare(frameIndex) {
-			score += 10 + g.rolls[frameIndex+2]
+		} else if isSpare(g, frameIndex) {
+			score += 10 + spareBonus(g, frameIndex)
 			frameIndex += 2
 		} else {
 			score += g.rolls[frameIndex] + g.rolls[frameIndex+1]
@@ -35,11 +35,19 @@ func (g *BowlingGame) String() string {
 	return fmt.Sprintf("%d", g.Score())
 }
 
-func (g *BowlingGame) isSpare(frameIndex int) bool {
+func spareBonus(g *BowlingGame, frameIndex int) int {
+	return g.rolls[frameIndex+2]
+}
+
+func strikeBonus(g *BowlingGame, frameIndex int) int {
+	return g.rolls[frameIndex+1] + g.rolls[frameIndex+2]
+}
+
+func isSpare(g *BowlingGame, frameIndex int) bool {
 	return g.rolls[frameIndex]+g.rolls[frameIndex+1] == 10
 }
 
-func (g *BowlingGame) isStrike(frameIndex int) bool {
+func isStrike(g *BowlingGame, frameIndex int) bool {
 	return g.rolls[frameIndex] == 10
 }
 

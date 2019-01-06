@@ -39,3 +39,15 @@ func TestOneSpare(t *testing.T) {
 		t.Fail()
 	}
 }
+
+func TestOneStrike(t *testing.T) {
+	g := BowlingGame{}
+	g.Roll(10)
+	g.Roll(3)
+	g.Roll(4)
+	RollMany(&g, 16, 0)
+	if g.Score() != 24 {
+		t.Log("Expected 24 but score is " + g.String())
+		t.Fail()
+	}
+}
